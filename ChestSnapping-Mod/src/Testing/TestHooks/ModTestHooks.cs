@@ -1,6 +1,6 @@
 using System;
 using ChestSnapping.Bootstrap;
-using Kydl.Common;
+using KydlCore.Common;
 using UnityEngine;
 
 namespace ChestSnapping.Testing
@@ -25,7 +25,7 @@ namespace ChestSnapping.Testing
 
         /// <summary>Is this tab (settings) registered in the KY hub right now?</summary>
         [TestHook("chestsnapping.tabRegistered")]
-        private static bool TabRegistered(string id) { return KydlCore.KyHub.HasTab(Plugin.ModGuid, id); }
+        private static bool TabRegistered(string id) { return KydlCore.Features.Hub.Contracts.KyHub.HasTab(Plugin.ModGuid, id); }
 
         [TestHook("chestsnapping.selftest")]
         private static string SelfTest() { return TestLabSupport.RunInGameTests(typeof(InGameTests)); }

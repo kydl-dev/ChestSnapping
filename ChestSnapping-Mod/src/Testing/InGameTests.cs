@@ -1,5 +1,5 @@
 using System.Linq;
-using Kydl.Common;
+using KydlCore.Common;
 using UnityEngine;
 
 namespace ChestSnapping.Testing

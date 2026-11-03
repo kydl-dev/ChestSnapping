@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Jotunn.Entities;
-using Kydl.Common;
+using KydlCore.Common;
 using UnityEngine;
 
 namespace ChestSnapping

@@ -1,5 +1,5 @@
 using BepInEx.Configuration;
-using Kydl.Common;
+using KydlCore.Common;
 
 namespace ChestSnapping.Presentation.Hub.Registration
 {
@@ -10,16 +10,16 @@ namespace ChestSnapping.Presentation.Hub.Registration
 
         internal static bool RegisterModPage(ConfigFile config)
         {
-            global::KydlCore.KyHub.SetModTitle(Plugin.ModGuid, "Chest Snapping");
-            var tab = global::KydlCore.KyHub.AddTab(Plugin.ModGuid, SettingsId, "Settings", () => global::KydlCore.KyHub.ConfigEntries(config), 0);
+            global::KydlCore.Features.Hub.Contracts.KyHub.SetModTitle(Plugin.ModGuid, "Chest Snapping");
+            var tab = global::KydlCore.Features.Hub.Contracts.KyHub.AddTab(Plugin.ModGuid, SettingsId, "Settings", () => global::KydlCore.Features.Hub.Contracts.KyHub.ConfigEntries(config), 0);
             ModLog.Verbose("HubTabs: settings tab " + (tab != null ? "registered" : "FAILED"));
             return tab != null;
         }
 
         internal static bool UnregisterModPage()
         {
-            global::KydlCore.KyHub.RemoveTab(Plugin.ModGuid, SettingsId);
-            return !global::KydlCore.KyHub.HasTab(Plugin.ModGuid, SettingsId);
+            global::KydlCore.Features.Hub.Contracts.KyHub.RemoveTab(Plugin.ModGuid, SettingsId);
+            return !global::KydlCore.Features.Hub.Contracts.KyHub.HasTab(Plugin.ModGuid, SettingsId);
         }
     }
 }
