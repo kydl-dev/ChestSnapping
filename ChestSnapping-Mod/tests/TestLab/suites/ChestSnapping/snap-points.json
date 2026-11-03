@@ -1,0 +1,16 @@
+{
+  "name": "snap-points",
+  "description": "Every built-in chest gets 14 snap points on its placement ghost; the config source is 'default'",
+  "timeout": 60,
+  "steps": [
+    { "do": "hook", "name": "chestsnapping.arena", "contains": "arena at", "label": "start on the arena spot" },
+    { "do": "hook", "name": "chestsnapping.source", "args": { "prefab": "piece_chest_wood" }, "expect": "default" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "wood chest" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest" }, "expect": 14, "label": "reinforced chest" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_private" }, "expect": 14, "label": "private chest" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_blackmetal" }, "expect": 14, "label": "blackmetal chest" }
+  ],
+  "asserts": [
+    { "check": "noErrors", "source": "ChestSnapping" }
+  ]
+}

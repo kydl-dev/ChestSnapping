@@ -1,0 +1,27 @@
+{
+  "name": "ChestSnapping",
+  "description": "ChestSnapping: snap points on chests, excluded prefabs, saved adjustments, KY hub settings tab, live feature switching (KydlCore D-084)",
+  "requireMods": [
+    { "guid": "com.kydldev.ChestSnapping", "minVersion": "2.0.0" },
+    { "guid": "com.kydldev.KydlCore", "minVersion": "0.1.0" }
+  ],
+  "configOverrides": [
+    { "guid": "com.kydldev.ChestSnapping", "section": "General", "key": "EnableAll", "value": "true" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Prefabs", "key": "Enable", "value": "true" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Prefabs", "key": "ExtraPrefabs", "value": "" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Prefabs", "key": "ExcludedPrefabs", "value": "" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Prefabs", "key": "AutoDetectContainers", "value": "false" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Offsets", "key": "Enable", "value": "true" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "Offsets", "key": "PrefabAdjustments", "value": "" },
+    { "guid": "com.kydldev.ChestSnapping", "section": "DebugLog", "key": "Enable", "value": "true" }
+  ],
+  "resetBetweenTests": true,
+  "tests": [
+    "selftest",
+    "hub-page",
+    "feature-toggle",
+    "snap-points",
+    "excluded-prefab",
+    "adjustment-applies"
+  ]
+}

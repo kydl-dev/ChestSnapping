@@ -1,0 +1,35 @@
+{
+  "name": "feature-toggle",
+  "description": "EnableAll off stops both features and removes the snap points; each Enable switch stops only its own feature; on starts them again. The settings tab stays.",
+  "timeout": 90,
+  "steps": [
+    { "do": "hook", "name": "chestsnapping.arena", "contains": "arena at", "label": "start on the arena spot" },
+    { "do": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": true, "label": "snapping running at start" },
+    { "do": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "adjustments" }, "expect": true, "label": "adjustments running at start" },
+    { "do": "hook", "name": "chestsnapping.tabRegistered", "args": { "id": "settings" }, "expect": true, "label": "settings tab registered" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "wood chest ghost has 14 snap points" },
+    { "do": "setConfig", "values": { "Prefabs/Enable": false } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": false }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "adjustments" }, "expect": true, "label": "adjustments unaffected by Prefabs/Enable" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 0, "label": "no snap points while Prefabs/Enable is off" },
+    { "do": "setConfig", "values": { "Prefabs/Enable": true } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": true }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "snap points back" },
+    { "do": "setConfig", "values": { "Offsets/Enable": false } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "adjustments" }, "expect": false }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": true, "label": "snapping unaffected by Offsets/Enable" },
+    { "do": "setConfig", "values": { "Offsets/Enable": true } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "adjustments" }, "expect": true }, "timeout": 5 },
+    { "do": "setConfig", "values": { "General/EnableAll": false } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": false }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "adjustments" }, "expect": false, "label": "adjustments stopped by EnableAll" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 0, "label": "no snap points while EnableAll is off" },
+    { "do": "hook", "name": "chestsnapping.tabRegistered", "args": { "id": "settings" }, "expect": true, "label": "settings tab stays" },
+    { "do": "setConfig", "values": { "General/EnableAll": true } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.featureRunning", "args": { "id": "snapping" }, "expect": true }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "snap points back after EnableAll" }
+  ],
+  "asserts": [
+    { "check": "noErrors", "source": "ChestSnapping" }
+  ]
+}

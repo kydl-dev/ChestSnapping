@@ -1,0 +1,20 @@
+{
+  "name": "adjustment-applies",
+  "description": "A saved shift moves the snap points by exactly that amount; [Offsets] Enable off ignores it",
+  "timeout": 60,
+  "steps": [
+    { "do": "hook", "name": "chestsnapping.arena", "contains": "arena at", "label": "start on the arena spot" },
+    { "do": "hook", "name": "chestsnapping.adjustDeltaY", "args": { "prefab": "piece_chest_wood" }, "expect": 0, "label": "no adjustment at start" },
+    { "do": "setConfig", "values": { "Offsets/PrefabAdjustments": "piece_chest_wood: shift=0,0.5,0" } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.adjustDeltaY", "args": { "prefab": "piece_chest_wood" }, "expect": 0.5 }, "timeout": 5 },
+    { "do": "setConfig", "values": { "Offsets/Enable": false } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.adjustDeltaY", "args": { "prefab": "piece_chest_wood" }, "expect": 0 }, "timeout": 5 },
+    { "do": "setConfig", "values": { "Offsets/Enable": true } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.adjustDeltaY", "args": { "prefab": "piece_chest_wood" }, "expect": 0.5 }, "timeout": 5 },
+    { "do": "setConfig", "values": { "Offsets/PrefabAdjustments": "" } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.adjustDeltaY", "args": { "prefab": "piece_chest_wood" }, "expect": 0 }, "timeout": 5 }
+  ],
+  "asserts": [
+    { "check": "noErrors", "source": "ChestSnapping" }
+  ]
+}

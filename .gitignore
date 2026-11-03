@@ -1,0 +1,53 @@
+# --- agent / local ---
+CLAUDE.local.md
+.claude/settings.local.json
+_agent/.session
+_agent/CATCHUP.txt
+.env
+.env.*
+secrets/
+*.token
+
+# --- references live in E:\Projects\Valheim\Claude\ref (never in this repo) ---
+/*-Mod/ref/
+/*-Mod/tests/.nuget/
+/_backup*/
+
+# --- build output copied into the mod's assets folder ---
+/*-Mod/Assets/*.dll
+/*-Mod/Assets/*.pdb
+/*-Mod/assets/*.dll
+/*-Mod/assets/*.pdb
+
+# --- local docs (user, 2026-11-03: docs\ is not published) ---
+/*-Mod/docs/
+
+# --- release-gate output ---
+/*-Mod/release/*/release-gate.*
+/*-Mod/release/*/_stage/
+/*-Mod/release/*/*.zip
+
+# --- .NET / Visual Studio / Rider ---
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.nupkg
+TestResults/
+Environment.props
+
+# --- OS ---
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# --- not published anywhere in the tree (user, 2026-10-29) ---
+/_testruns/
+/_agent/
+/.claude/
+/CLAUDE.md
+CLAUDE.md
+.claude/
+*.dll

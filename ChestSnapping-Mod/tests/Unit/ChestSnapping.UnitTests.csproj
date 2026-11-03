@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Unit tests: pure logic, no game running. Logic worth testing lives in classes without Unity / Valheim types; link those files here. -->
+  <PropertyGroup>
+    <AssemblyName>ChestSnapping.UnitTests</AssemblyName>
+    <RootNamespace>ChestSnapping.Tests.Unit</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\Core\Functions.cs" Link="Mod\Functions.cs" />
+    <Compile Include="..\..\src\Features\Snapping\Domain\PrefabNames.cs" Link="Mod\PrefabNames.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+{
+  "name": "snap-feel",
+  "description": "Placing a chest: Q / E cycle the 14 snap points and the chest locks flush against another chest",
+  "manualOnly": true,
+  "timeout": 600,
+  "steps": [
+    { "do": "hook", "name": "chestsnapping.arena", "contains": "arena at", "label": "start on the arena spot" },
+    { "do": "checkpoint", "message": "Build a wood chest, then pick another wood chest in the build menu. Press Q / E: does the message in the middle show 'Snapping: Bottom Front Left' and so on, cycling through 14 points?" },
+    { "do": "checkpoint", "message": "Aim the held chest at the placed one with a corner point selected: does it lock flush, face to face, without a gap or overlap?" },
+    { "do": "checkpoint", "message": "Open the console (F5), run chestsnap_show on: are yellow and cyan spheres on the corners and face centers? Then chestsnap_show off." }
+  ],
+  "asserts": [
+    { "check": "noErrors", "source": "ChestSnapping" }
+  ]
+}

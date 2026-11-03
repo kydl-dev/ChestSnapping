@@ -1,0 +1,11 @@
+{
+  "name": "ChestSnapping",
+  "version_number": "2.0.0",
+  "website_url": "",
+  "description": "Lets chests use Valheim's built-in snap system. Press Q/E while placing to pick one of 14 snap points. Works with modded chests, and the snap points can be adjusted in-game.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2351",
+    "ValheimModding-Jotunn-2.30.2",
+    "KydlDev-KydlCore-0.1.0"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "excluded-prefab",
+  "description": "ExcludedPrefabs takes a chest out (live), emptying the list brings it back",
+  "timeout": 60,
+  "steps": [
+    { "do": "hook", "name": "chestsnapping.arena", "contains": "arena at", "label": "start on the arena spot" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "snap points at start" },
+    { "do": "setConfig", "values": { "Prefabs/ExcludedPrefabs": "piece_chest_wood" } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.source", "args": { "prefab": "piece_chest_wood" }, "expect": "none" }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 0, "label": "excluded chest has none" },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest" }, "expect": 14, "label": "other chests unaffected" },
+    { "do": "setConfig", "values": { "Prefabs/ExcludedPrefabs": "" } },
+    { "do": "wait", "until": { "check": "hook", "name": "chestsnapping.source", "args": { "prefab": "piece_chest_wood" }, "expect": "default" }, "timeout": 5 },
+    { "do": "hook", "name": "chestsnapping.ghostPoints", "args": { "prefab": "piece_chest_wood" }, "expect": 14, "label": "back after clearing the list" }
+  ],
+  "asserts": [
+    { "check": "noErrors", "source": "ChestSnapping" }
+  ]
+}
