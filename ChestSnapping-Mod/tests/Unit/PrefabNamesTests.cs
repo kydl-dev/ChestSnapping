@@ -25,7 +25,9 @@ public class PrefabNamesTests
     [Test]
     public void Parse_IsCaseInsensitive()
     {
+#pragma warning disable NUnit2014 // the set's own comparer is what is tested: Does.Contain would compare case-sensitively
         Assert.That(PrefabNames.Parse("Piece_Chest").Contains("piece_chest"), Is.True);
+#pragma warning restore NUnit2014
     }
 
     [TestCase("piece_chest_wood(Clone)", "piece_chest_wood")]
@@ -40,16 +42,22 @@ public class PrefabNamesTests
     [Test]
     public void Append_StartsAListOrExtendsIt()
     {
-        Assert.That(PrefabNames.Append("", "x"), Is.EqualTo("x"));
-        Assert.That(PrefabNames.Append("a, b,", "x"), Is.EqualTo("a, b, x"));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(PrefabNames.Append("", "x"), Is.EqualTo("x"));
+            Assert.That(PrefabNames.Append("a, b,", "x"), Is.EqualTo("a, b, x"));
+        }
     }
 
     [Test]
     public void Remove_DropsTheNameCaseInsensitive_KeepsTheRest()
     {
-        Assert.That(PrefabNames.Remove("a, B, c", "b"), Is.EqualTo("a, c"));
-        Assert.That(PrefabNames.Remove("a", "a"), Is.EqualTo(""));
-        Assert.That(PrefabNames.Remove(null, "a"), Is.EqualTo(""));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(PrefabNames.Remove("a, B, c", "b"), Is.EqualTo("a, c"));
+            Assert.That(PrefabNames.Remove("a", "a"), Is.EqualTo(""));
+            Assert.That(PrefabNames.Remove(null, "a"), Is.EqualTo(""));
+        }
     }
 
     [Test]
