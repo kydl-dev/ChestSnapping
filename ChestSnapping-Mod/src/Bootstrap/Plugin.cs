@@ -17,7 +17,7 @@ namespace ChestSnapping;
 /// </summary>
 [BepInPlugin(ModGuid, ModName, ModVersion)]
 [BepInDependency(Jotunn.Main.ModGuid)]
-[BepInDependency(KydlCore.Bootstrap.Plugin.ModGuid, "0.1.0")]     // the KY hub (manifest: KydlDev-KydlCore-0.1.0, same version)
+[BepInDependency(KydlCore.Bootstrap.Plugin.ModGuid, "1.0.0")]     // the KY hub (manifest: KydlDev-KydlCore-1.0.0, same version)
 // Purely client-side: placed pieces are synced by vanilla, snap points are local helpers. A player without the mod can join;
 // when both sides have it the version must match.
 [NetworkCompatibility(CompatibilityLevel.VersionCheckOnly, VersionStrictness.Patch)]
