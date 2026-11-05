@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2.0.0
+- Tested in game with the full TestLab suite (6 tests): 3 green runs in a row on 2026-11-05, plus the ecosystem run with all 12 KydlDev mods loaded together.
 - Breaking: ChestSnapping now needs the KydlCore mod (hard dependency). Install KydlCore as well.
 - Ported to the KydlDev layout (feature switches, KY hub settings tab, TestLab suites). The snap points and console commands work as before. Checked in game on 2026-11-04 (clean start and quit with all mods loaded, no errors from this mod).
 - New config switches: `[General] EnableAll`, `[Prefabs] Enable` (snap points on chests) and `[Offsets] Enable` (apply the saved `PrefabAdjustments`). Switching them changes the chests that are already built, no restart needed.
